@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reashmanth - Full Stack Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -11,10 +15,13 @@
     <nav class="navbar">
         <div class="nav-content">
             <div class="logo">Reashmanth</div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
+                <li><a href="#home">About</a></li>
                 <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
@@ -24,23 +31,14 @@
         <div class="hero-content">
             <h1>Hi, I'm Reashmanth</h1>
             <h2>Full Stack Developer</h2>
-            <p>Building robust web applications with modern technologies</p>
-        </div>
-    </section>
-
-    <section id="about" class="about">
-        <div class="container">
-            <h2>About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>I am a full stack developer with 4 years of experience in developing robust and scalable web applications. My expertise includes both frontend and backend technologies, with a focus on creating clean, efficient, and maintainable code.
-
-                        I believe in writing code that is not only functional but also elegant and easy to understand. My goal is to deliver high-quality solutions that meet business needs while providing a great user experience.</p>
-                </div>
-                <div class="experience">
-                    <h3>Experience</h3>
-                    <p>4+ Years of Professional Development</p>
-                </div>
+            <p>I am a full stack developer with 4 years of experience in developing robust and scalable web applications.</p>
+            <div class="hero-details">
+                <p>Specialized in Java Spring Boot and Angular development with a strong focus on creating efficient, maintainable, and high-performance applications. Experienced in developing RESTful APIs, microservices, and working with various databases.</p>
+            </div>
+            <div class="hero-buttons">
+                <a href="Reashmanth_resume.pdf" download target="_blank" class="download-btn">
+                    <i class="fas fa-download"></i> Download Resume
+                </a>
             </div>
         </div>
     </section>
@@ -49,66 +47,73 @@
         <div class="container">
             <h2>Tech Stack</h2>
             <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Backend</h3>
-                    <ul>
-                        <li>Java</li>
-                        <li>Spring Boot</li>
-                        <li>Spring JPA</li>
-                        <li>Hibernate</li>
-                        <li>Maven</li>
-                    </ul>
+                <div class="skill-category main-skills">
+                    <div class="tech-stack-grid">
+                        <div class="tech-item backend">
+                            <i class="fas fa-server"></i>
+                            <h3>Backend</h3>
+                            <div class="tech-items">
+                                <span><i class="fab fa-java"></i>Java</span>
+                                <span><i class="fas fa-leaf"></i>Spring Boot</span>
+                                <span><i class="fas fa-database"></i>Spring JPA</span>
+                                <span><i class="fas fa-code"></i>Hibernate</span>
+                                <span><i class="fas fa-cogs"></i>Maven</span>
+                            </div>
+                        </div>
+                        <div class="tech-item frontend">
+                            <i class="fas fa-desktop"></i>
+                            <h3>Frontend</h3>
+                            <div class="tech-items">
+                                <span><i class="fab fa-angular"></i>Angular</span>
+                                <span><i class="fab fa-js"></i>JavaScript</span>
+                                <span><i class="fab fa-html5"></i>HTML5</span>
+                                <span><i class="fab fa-css3-alt"></i>CSS3</span>
+                            </div>
+                        </div>
+                        <div class="tech-item database-devops">
+                            <div class="combined-header">
+                                <div class="header-item">
+                                    <i class="fas fa-database"></i>
+                                    <h3>Database & DevOps</h3>
+                                </div>
+                            </div>
+                            <div class="tech-items">
+                                <span><i class="devicon-postgresql-plain colored"></i>PostgreSQL</span>
+                                <span><i class="devicon-oracle-plain colored"></i>Oracle SQL</span>
+                                <span><i class="fab fa-docker"></i>Docker</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="skill-category">
-                    <h3>Frontend</h3>
-                    <ul>
-                        <li>Angular</li>
-                        <li>JavaScript</li>
-                        <li>HTML5</li>
-                        <li>CSS3</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3>Database</h3>
-                    <ul>
-                        <li>PostgreSQL</li>
-                        <li>Oracle SQL</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3>DevOps</h3>
-                    <ul>
-                        <li>Docker</li>
-                    </ul>
-                </div>
+
                 <div class="skill-category">
                     <h3>Tools & Environment</h3>
                     <div class="tools-grid">
-                        <div class="tool-item">
+                        <div class="tool-item docker">
                             <i class="fab fa-docker"></i>
                             <span>Docker</span>
                         </div>
-                        <div class="tool-item">
+                        <div class="tool-item git">
                             <i class="fab fa-git-alt"></i>
                             <span>Git</span>
                         </div>
-                        <div class="tool-item">
+                        <div class="tool-item intellij">
                             <i class="fas fa-code"></i>
                             <span>IntelliJ IDEA</span>
                         </div>
-                        <div class="tool-item">
+                        <div class="tool-item vscode">
                             <i class="fas fa-code"></i>
                             <span>VS Code</span>
                         </div>
-                        <div class="tool-item">
+                        <div class="tool-item postman">
                             <i class="fas fa-paper-plane"></i>
                             <span>Postman</span>
                         </div>
-                        <div class="tool-item">
+                        <div class="tool-item jira">
                             <i class="fab fa-jira"></i>
                             <span>JIRA</span>
                         </div>
-                        <div class="tool-item">
+                        <div class="tool-item confluence">
                             <i class="fab fa-confluence"></i>
                             <span>Confluence</span>
                         </div>
@@ -175,18 +180,18 @@
         </div>
     </section>
 
-    <section id="contact" class="contact">
+    <section class="contact" id="contact">
         <div class="container">
             <h2>Get in Touch</h2>
-            <form id="contact-form" class="contact-form">
+            <form class="contact-form" id="contactForm">
                 <div class="form-group">
-                    <input type="text" id="name" name="name" required placeholder="Your Name">
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
                 </div>
                 <div class="form-group">
-                    <input type="email" id="email" name="email" required placeholder="Your Email">
+                    <input type="email" id="email" name="email" placeholder="Your Email" required>
                 </div>
                 <div class="form-group">
-                    <textarea id="message" name="message" required placeholder="Your Message"></textarea>
+                    <textarea id="message" name="message" placeholder="Your Message" required></textarea>
                 </div>
                 <button type="submit" class="submit-btn">Send Message</button>
             </form>
@@ -199,6 +204,7 @@
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html> 
