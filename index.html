@@ -46,8 +46,6 @@
     <section id="skills" class="skills">
         <div class="container">
             <h2>Tech Stack</h2>
-            <p class="section-description">Experienced with a comprehensive suite of modern technologies and frameworks.</p>
-            <p class="section-description tech-description">Specialized in full-stack development with Java Spring Boot and Angular, complemented by robust DevOps practices and database management.</p>
             <div class="skills-grid">
                 <div class="skill-category main-skills">
                     <div class="tech-stack-grid">
@@ -212,14 +210,16 @@
             <div class="divider"></div>
             <form id="contact-form" class="contact-form">
                 <div class="form-group">
-                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    <input type="text" id="name" name="from_name" placeholder="Your Name" required>
                 </div>
                 <div class="form-group">
-                    <input type="email" id="email" name="email" placeholder="Your Email" required>
+                    <input type="email" id="email" name="from_email" placeholder="Your Email" required>
                 </div>
                 <div class="form-group">
                     <textarea id="message" name="message" placeholder="Your Message" required></textarea>
                 </div>
+                <input type="hidden" name="to_name" value="Reashmanth">
+                <input type="hidden" name="reply_to" id="reply_to">
                 <button type="submit" class="submit-btn">Send Message</button>
             </form>
         </div>

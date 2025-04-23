@@ -14,61 +14,92 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 mobileMenuBtn.querySelector('i').classList.replace('fa-times', 'fa-bars');
             }
 
-            // Smooth scroll to target
+            // Get current scroll position
+            const currentPosition = window.pageYOffset;
             const targetPosition = targetElement.offsetTop - 70; // Account for navbar height
-            window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
-            });
+            const distance = targetPosition - currentPosition;
+            const duration = 1000; // Duration in milliseconds
+            let start = null;
+
+            // Animation function
+            const animation = (currentTime) => {
+                if (start === null) start = currentTime;
+                const timeElapsed = currentTime - start;
+                const progress = Math.min(timeElapsed / duration, 1);
+
+                // Easing function for smooth animation
+                const easeInOutCubic = progress => {
+                    return progress < 0.5
+                        ? 4 * progress * progress * progress
+                        : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+                };
+
+                // Calculate current position
+                const currentScroll = currentPosition + (distance * easeInOutCubic(progress));
+                window.scrollTo(0, currentScroll);
+
+                // Continue animation if not complete
+                if (progress < 1) {
+                    requestAnimationFrame(animation);
+                }
+            };
+
+            // Start animation
+            requestAnimationFrame(animation);
         }
     });
 });
 
 // Initialize EmailJS with your public key
-(function() {
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize with your EmailJS public key
     emailjs.init("-x5SVLJQY3JW0Tb1W");
-})();
+    console.log('EmailJS initialized');
+});
 
 // Handle form submission
-document.getElementById('contactForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    
-    // Get form data
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const message = document.getElementById('message').value;
-    
-    // Show loading state
-    const submitBtn = this.querySelector('.submit-btn');
-    const originalText = submitBtn.textContent;
-    submitBtn.textContent = 'Sending...';
-    submitBtn.disabled = true;
-    
-    // Send email using EmailJS
-    emailjs.send('service_revfla2', 'template_dcii2rc', {
-        from_name: name,
-        from_email: email,
-        message: message,
-        to_name: 'Reashmanth',
-        to_email: 'reashmanthvk@gmail.com',
-        reply_to: email  // Add reply_to for better email functionality
-    })
-    .then(function() {
-        // Show success message
-        alert('Thank you for your message! I will get back to you soon.');
-        // Reset form
-        document.getElementById('contactForm').reset();
-    })
-    .catch(function(error) {
-        // Show error message
-        alert('Sorry, there was an error sending your message. Please try again later.');
-        console.error('EmailJS Error:', error);
-    })
-    .finally(function() {
-        // Reset button state
-        submitBtn.textContent = originalText;
-        submitBtn.disabled = false;
-    });
+document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Get form data
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            // Set reply_to field to match the email
+            document.getElementById('reply_to').value = email;
+            
+            // Show loading state
+            const submitBtn = this.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+            
+            console.log('Attempting to send email with EmailJS');
+            // Send email using EmailJS
+            emailjs.sendForm('service_revfla2', 'template_dcii2rc', this)
+            .then(function(response) {
+                console.log('SUCCESS!', response.status, response.text);
+                // Show success message
+                alert('Thank you for your message! I will get back to you soon.');
+                // Reset form
+                document.getElementById('contact-form').reset();
+            })
+            .catch(function(error) {
+                // Show error message
+                alert('Sorry, there was an error sending your message. Please try again later.');
+                console.error('EmailJS Error:', error);
+            })
+            .finally(function() {
+                // Reset button state
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            });
+        });
+    }
 });
 
 // Navbar scroll effect
@@ -87,28 +118,49 @@ window.addEventListener('scroll', () => {
     lastScroll = currentScroll;
 });
 
-// Mobile menu toggle
-const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-const navLinks = document.querySelector('.nav-links');
+// Mobile Navigation
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+    const body = document.body;
 
-mobileMenuBtn.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    const icon = mobileMenuBtn.querySelector('i');
-    if (navLinks.classList.contains('active')) {
-        icon.classList.replace('fa-bars', 'fa-times');
-    } else {
-        icon.classList.replace('fa-times', 'fa-bars');
-    }
-});
+    // Create overlay element
+    const overlay = document.createElement('div');
+    overlay.className = 'nav-overlay';
+    body.appendChild(overlay);
 
-// Close mobile menu when clicking outside
-document.addEventListener('click', (e) => {
-    if (navLinks.classList.contains('active') && 
-        !e.target.closest('.nav-links') && 
-        !e.target.closest('.mobile-menu-btn')) {
-        navLinks.classList.remove('active');
-        mobileMenuBtn.querySelector('i').classList.replace('fa-times', 'fa-bars');
+    function toggleMenu() {
+        navLinks.classList.toggle('active');
+        overlay.classList.toggle('active');
+        body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+        
+        // Toggle icon
+        const icon = mobileMenuBtn.querySelector('i');
+        icon.classList.toggle('fa-bars');
+        icon.classList.toggle('fa-times');
     }
+
+    // Toggle menu on button click
+    mobileMenuBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        toggleMenu();
+    });
+
+    // Close menu when clicking overlay
+    overlay.addEventListener('click', toggleMenu);
+
+    // Close menu when clicking a link
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', toggleMenu);
+    });
+
+    // Close menu on escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+            toggleMenu();
+        }
+    });
 });
 
 // Project details toggle
