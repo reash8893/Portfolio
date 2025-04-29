@@ -115,9 +115,7 @@ body {
         box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
     }
 
-    .nav-links.active {
-        right: 0;
-    }
+    .nav-links.active { right: 0; }
 
     .nav-links a {
         font-size: 1.2rem;
@@ -125,7 +123,7 @@ body {
         text-align: center;
         padding: 1rem;
         border-radius: 8px;
-        transition: all 0.3s ease;
+        transition: background 0.3s ease, color 0.3s ease;
     }
 
     .nav-links a:hover {
@@ -146,9 +144,7 @@ body {
         z-index: 999;
     }
 
-    .nav-overlay.active {
-        display: block;
-    }
+    .nav-overlay.active { display: block; }
 }
 
 /* Hero Section */
@@ -291,7 +287,7 @@ body {
 }
 
 .main-skills {
-    padding: 2rem !important;
+    padding: 2rem;
 }
 
 .tech-stack-grid {
@@ -307,7 +303,7 @@ body {
     padding: 2rem;
     border-radius: 15px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .tech-item:hover {
@@ -376,17 +372,13 @@ body {
     border-radius: 20px;
     font-size: 0.9rem;
     color: var(--text-color);
-    transition: all 0.3s ease;
+    transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
 
 .tech-items span:hover {
-    transform: translateY(-2px);
     background: var(--primary-color);
     color: white;
-}
-
-.tech-items span:hover i {
-    color: white;
+    transform: translateY(-2px);
 }
 
 .tech-items i {
@@ -491,6 +483,335 @@ body {
 .tool-item.postman i { color: #FF6C37; }
 .tool-item.jira i { color: #0052CC; }
 .tool-item.confluence i { color: #0052CC; }
+
+/* Career Section */
+.career {
+    padding: 6rem 0;
+    background: linear-gradient(135deg, #f0f7ff 0%, #e0e9ff 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.career::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 10% 20%, rgba(79, 70, 229, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 90% 80%, rgba(59, 130, 246, 0.2) 0%, transparent 50%);
+    z-index: 1;
+}
+
+.career .container {
+    position: relative;
+    z-index: 2;
+    max-width: 1100px;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.career h2 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+.career-subtitle {
+    font-size: 1.1rem;
+    color: var(--light-text);
+    position: relative;
+    display: inline-block;
+}
+
+.career-subtitle::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+    border-radius: 3px;
+}
+
+/* New Career Cards Layout */
+.career-cards-container {
+    position: relative;
+    padding: 2rem 0;
+}
+
+.career-card {
+    position: relative;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    padding: 2rem;
+    margin-bottom: 3rem;
+    transition: all 0.4s ease;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    z-index: 2;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+        "year icon"
+        "year content";
+    column-gap: 1.5rem;
+    overflow: hidden;
+}
+
+.career-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--gradient-start), var(--gradient-end));
+    border-radius: 6px 0 0 6px;
+}
+
+.career-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.career-year {
+    grid-area: year;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    background: rgba(79, 70, 229, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: fit-content;
+    min-width: 110px;
+    margin-top: 0.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(79, 70, 229, 0.1);
+}
+
+.career-card:hover .career-year {
+    background: rgba(79, 70, 229, 0.2);
+    box-shadow: 0 5px 15px rgba(79, 70, 229, 0.2);
+    transform: scale(1.05);
+}
+
+.career-icon {
+    grid-area: icon;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    box-shadow: 0 5px 15px rgba(79, 70, 229, 0.3);
+    transition: all 0.4s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.career-icon::before {
+    content: '';
+    position: absolute;
+    inset: -5px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+    opacity: 0.5;
+    z-index: -1;
+    transition: all 0.4s ease;
+}
+
+.career-card:hover .career-icon {
+    transform: scale(1.1) rotate(10deg);
+}
+
+.career-card:hover .career-icon::before {
+    inset: -8px;
+    opacity: 0.3;
+}
+
+.career-icon i {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.career-content {
+    grid-area: content;
+}
+
+.career-content h3 {
+    font-size: 1.4rem;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+}
+
+.career-card:hover .career-content h3 {
+    color: var(--primary-color);
+    transform: translateX(5px);
+}
+
+.career-details {
+    color: var(--light-text);
+}
+
+.career-tag {
+    display: inline-block;
+    padding: 0.3rem 1rem;
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--primary-color);
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+}
+
+.career-card:hover .career-tag {
+    background: rgba(59, 130, 246, 0.2);
+    transform: translateX(5px);
+}
+
+.career-details p {
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+}
+
+/* Career Progress Line */
+.career-progress {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    background: linear-gradient(to bottom, var(--gradient-start), var(--gradient-end));
+    border-radius: 4px;
+    z-index: 1;
+    opacity: 0.5;
+}
+
+.progress-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--gradient-start), var(--gradient-mid), var(--gradient-end));
+    border-radius: 4px;
+    animation: progress-pulse 2s infinite;
+}
+
+@keyframes progress-pulse {
+    0% {
+        box-shadow: 0 0 5px rgba(79, 70, 229, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 15px rgba(79, 70, 229, 0.8);
+    }
+    100% {
+        box-shadow: 0 0 5px rgba(79, 70, 229, 0.5);
+    }
+}
+
+.progress-dot {
+    position: absolute;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    background: white;
+    border: 3px solid var(--primary-color);
+    border-radius: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 0 10px rgba(79, 70, 229, 0.5);
+    z-index: 2;
+}
+
+.dot1 { top: 10%; }
+.dot2 { top: 36%; }
+.dot3 { top: 62%; }
+.dot4 { top: 88%; }
+
+/* Card-specific styling */
+.career-card.education .career-icon {
+    background: linear-gradient(135deg, #4f46e5, #6366f1);
+}
+
+.career-card.trainee .career-icon {
+    background: linear-gradient(135deg, #3b82f6, #60a5fa);
+}
+
+.career-card.engineer .career-icon {
+    background: linear-gradient(135deg, #2563eb, #3b82f6);
+}
+
+.career-card.fullstack .career-icon {
+    background: linear-gradient(135deg, #1d4ed8, #2563eb);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .career-card {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "icon"
+            "year"
+            "content";
+        padding: 1.5rem;
+    }
+    
+    .career-icon {
+        margin: 0 auto 1rem;
+    }
+    
+    .career-year {
+        margin: 0 auto 1.5rem;
+    }
+    
+    .career-progress {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .timeline::before {
+        left: 30px;
+    }
+    
+    .timeline-item {
+        padding-left: 60px;
+    }
+    
+    .timeline-dot {
+        left: 28px;
+    }
+    
+    .timeline-date {
+        width: 25px;
+        font-size: 0.8rem;
+    }
+}
 
 /* Projects Section */
 .projects {
@@ -671,7 +992,7 @@ body {
     gap: 1rem;
     color: var(--text-color);
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .contact-item:hover {
@@ -760,35 +1081,16 @@ body {
 
 /* Responsive styles */
 @media (max-width: 1024px) {
-    .tech-stack-grid {
-        grid-template-columns: 1fr;
-    }
+    .tech-stack-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 768px) {
-    .tech-items {
-        justify-content: center;
-    }
-
-    .tech-item {
-        text-align: center;
-    }
-
-    .tools-grid {
-        gap: 0.8rem;
-    }
-
-    .tool-item {
-        padding: 0.5rem 1rem;
-    }
-
-    .hero-content h1 {
-        font-size: 3rem;
-    }
-
-    .hero-content h2 {
-        font-size: 1.5rem;
-    }
+    .tech-items { justify-content: center; }
+    .tech-item { text-align: center; }
+    .tools-grid { gap: 0.8rem; }
+    .tool-item { padding: 0.5rem 1rem; }
+    .hero-content h1 { font-size: 3rem; }
+    .hero-content h2 { font-size: 1.5rem; }
 }
 
 /* Responsive contact grid */
@@ -801,12 +1103,7 @@ body {
     .divider {
         width: 100%;
         height: 1px;
-        background: linear-gradient(
-            to right,
-            transparent,
-            var(--primary-color),
-            transparent
-        );
+        background: linear-gradient(to right, transparent, var(--primary-color), transparent);
         margin: 1rem 0;
     }
 } 
