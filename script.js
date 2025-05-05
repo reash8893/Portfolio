@@ -75,6 +75,45 @@ window.addEventListener('scroll', () => {
         '0 2px 10px rgba(0, 0, 0, 0.2)';
 });
 
+// Theme Toggle Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    // Theme toggle functionality
+    const themeToggle = document.getElementById('theme-toggle');
+    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    
+    // Function to set theme
+    function setTheme(theme) {
+        document.body.className = theme;
+        localStorage.setItem('theme', theme);
+    }
+    
+    // Check for saved theme preference or use device preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        setTheme(savedTheme);
+    } else {
+        // If no saved preference, use device preference
+        setTheme(prefersDarkScheme.matches ? 'dark-theme' : 'light-theme');
+    }
+    
+    // Toggle theme when button is clicked
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.body.className;
+            const newTheme = currentTheme === 'dark-theme' ? 'light-theme' : 'dark-theme';
+            setTheme(newTheme);
+        });
+    }
+    
+    // Listen for changes in device theme preference
+    prefersDarkScheme.addEventListener('change', (e) => {
+        // Only update if user hasn't manually set a preference
+        if (!localStorage.getItem('theme')) {
+            setTheme(e.matches ? 'dark-theme' : 'light-theme');
+        }
+    });
+});
+
 // Mobile Navigation
 document.addEventListener('DOMContentLoaded', function() {
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');

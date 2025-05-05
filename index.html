@@ -15,12 +15,17 @@
     <nav class="navbar">
         <div class="nav-content">
             <div class="logo">Reashmanth</div>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+                <i class="fas fa-moon dark-icon"></i>
+                <i class="fas fa-sun light-icon"></i>
+            </button>
             <button class="mobile-menu-btn">
                 <i class="fas fa-bars"></i>
             </button>
             <ul class="nav-links">
                 <li><a href="#home">About</a></li>
                 <li><a href="#skills">Skills</a></li>
+                <li><a href="#career">Career</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -29,6 +34,9 @@
 
     <section id="home" class="hero">
         <div class="hero-content">
+            <div class="profile-image-container">
+                <img src="reash.jpg" alt="Reashmanth" class="profile-image">
+            </div>
             <h1>Hi, I'm Reashmanth</h1>
             <h2>Full Stack Developer</h2>
             <p>I am a full stack developer with 4 years of experience in developing robust and scalable web applications.</p>
@@ -128,74 +136,37 @@
 
     <section id="career" class="career">
         <div class="container">
-            <div class="section-header">
-                <h2>Career Journey</h2>
-                <div class="career-subtitle">My Professional Path</div>
-            </div>
-            
-            <div class="career-cards-container">
-                <div class="career-card education">
-                    <div class="career-year">2021</div>
-                    <div class="career-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <div class="career-content">
-                        <h3>Masters in Computer Application</h3>
-                        <div class="career-details">
-                            <span class="career-tag">Education</span>
-                            <p>Graduated with a Master's degree in Computer Application</p>
+            <h2>Career Journey</h2>
+            <div class="career-timeline-container">
+                <div class="timeline">
+                    <div class="timeline-track"></div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">2023 - Present</div>
+                            <h3>Senior Software Engineer</h3>
+                            <p>Leading development initiatives and mentoring junior developers while implementing complex features and architectural improvements.</p>
                         </div>
                     </div>
-                </div>
-                
-                <div class="career-card trainee">
-                    <div class="career-year">2021-2022</div>
-                    <div class="career-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <div class="career-content">
-                        <h3>Graduate Trainee</h3>
-                        <div class="career-details">
-                            <span class="career-tag">Bonbloc Technologies</span>
-                            <p>Started my professional journey as a Graduate Trainee, learning the fundamentals of software development and industry practices.</p>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">2022</div>
+                            <h3>Software Engineer</h3>
+                            <p>Developed robust backend services and frontend components for enterprise applications.</p>
                         </div>
                     </div>
-                </div>
-                
-                <div class="career-card engineer">
-                    <div class="career-year">2022-2023</div>
-                    <div class="career-icon">
-                        <i class="fas fa-laptop-code"></i>
-                    </div>
-                    <div class="career-content">
-                        <h3>Software Engineer</h3>
-                        <div class="career-details">
-                            <span class="career-tag">Bonbloc Technologies</span>
-                            <p>Promoted to Software Engineer, taking on more responsibilities in development and project implementation.</p>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">2021</div>
+                            <h3>Graduate Trainee</h3>
+                            <p>Graduated with Masters in Computer Applications and started career as a graduate trainee, working on various projects to gain practical experience.</p>
                         </div>
                     </div>
-                </div>
-                
-                <div class="career-card fullstack">
-                    <div class="career-year">2023-Present</div>
-                    <div class="career-icon">
-                        <i class="fas fa-layer-group"></i>
-                    </div>
-                    <div class="career-content">
-                        <h3>Full Stack Engineer</h3>
-                        <div class="career-details">
-                            <span class="career-tag">Bonbloc Technologies</span>
-                            <p>Working as a Full Stack Engineer, developing end-to-end solutions and leading technical implementations.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="career-progress">
-                    <div class="progress-line"></div>
-                    <div class="progress-dot dot1"></div>
-                    <div class="progress-dot dot2"></div>
-                    <div class="progress-dot dot3"></div>
-                    <div class="progress-dot dot4"></div>
                 </div>
             </div>
         </div>
@@ -208,8 +179,8 @@
             
             <div class="projects-grid">
                 <div class="project-card">
-                    <div class="project-icon">
-                        <i class="fas fa-chart-line"></i>
+                    <div class="project-image">
+                        <img src="ET.jpg" alt="Expense Tracker" class="project-img">
                     </div>
                     <h3>Expense Tracker</h3>
                     <p>A web application that helps users track their expenses and income. Features include categorization, filtering, and visual reporting of spending habits.</p>
@@ -223,8 +194,8 @@
                 </div>
 
                 <div class="project-card">
-                    <div class="project-icon">
-                        <i class="fas fa-users"></i>
+                    <div class="project-image">
+                        <img src="TMR.jpg" alt="Teammate Relations Survey Management App" class="project-img">
                     </div>
                     <h3>Teammate Relations Survey Management App</h3>
                     <p>An application for creating, distributing, and analyzing team surveys. Includes dashboards for management to visualize team dynamics.</p>
@@ -238,8 +209,8 @@
                 </div>
 
                 <div class="project-card">
-                    <div class="project-icon">
-                        <i class="fas fa-shopping-cart"></i>
+                    <div class="project-image">
+                        <img src="e-comm.jpg" alt="E-Commerce Platform" class="project-img">
                     </div>
                     <h3>E-Commerce Platform</h3>
                     <p>A full-featured e-commerce platform with product management, shopping cart, and order processing capabilities.</p>
